@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express();
+require('dotenv').config();
+
 const path = require("path");
 const mongoose = require("mongoose");
 const colors = require("colors");
@@ -13,7 +15,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/User")
 const port = 5001;
 
-mongoose.connect("mongodb+srv://mohit:LNOfIPta7WSxrNEE@cluster0.ievjznx.mongodb.net/e-comm")
+mongoose.connect(process.env.DATABASE_URL)
 .then(()=> console.log("db connected sucessfully".blue))
 .catch((err)=> console.log(err));
 
